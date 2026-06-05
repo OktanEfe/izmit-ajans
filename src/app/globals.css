@@ -1,8 +1,8 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #050505;
+  --foreground: #ededed;
 }
 
 @theme inline {
@@ -12,21 +12,105 @@
   --font-mono: var(--font-geist-mono);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
-
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-geist-sans), Arial, Helvetica, sans-serif;
 }
+
+/* ============================================================
+   GLOBAL HEADING FIX
+   g, j, p, q, y gibi descender harflerin alt kuyruğunu kesen
+   overflow:hidden ve dar line-height sorununu global çöz
+   ============================================================ */
+h1, h2, h3, h4, h5, h6 {
+  overflow: visible !important;
+  padding-bottom: 0.15em;
+}
+
 @layer utilities {
   .outline-text {
     -webkit-text-stroke: 1px rgba(255, 255, 255, 0.2);
     color: transparent;
   }
+}
+
+/* ============================================================
+   APPLE INTELLIGENCE ANIMATED BORDER
+   Conic-gradient dönen border — Hero section için
+   ============================================================ */
+@property --angle {
+  syntax: '<angle>';
+  inherits: false;
+  initial-value: 0deg;
+}
+
+@keyframes borderSpin {
+  to { --angle: 360deg; }
+}
+
+.hero-animated-border {
+  background: conic-gradient(
+    from var(--angle),
+    #8B5CF6,
+    #EC4899,
+    #FF5A00,
+    #4D8DFF,
+    #8B5CF6
+  );
+  animation: borderSpin 4s linear infinite;
+  -webkit-mask:
+    linear-gradient(#fff 0 0) content-box,
+    linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+}
+
+/* ============================================================
+   SONAR PULSE — İçeriye doğru ses dalgası titreşimi
+   3 katmanlı ripple: mor + turuncu + pembe — 0.4s arayla tetiklenir
+   ============================================================ */
+@keyframes sonarPulse {
+  0% {
+    box-shadow:
+      inset 0 0  0px  0px rgba(139, 92,  246, 0),
+      inset 0 0  0px  0px rgba(255, 90,    0, 0),
+      inset 0 0  0px  0px rgba(236, 72,  153, 0);
+  }
+  40% {
+    box-shadow:
+      inset 0 0 20px  6px rgba(139, 92,  246, 0.45),
+      inset 0 0 40px 12px rgba(255, 90,    0, 0.25),
+      inset 0 0 30px  8px rgba(236, 72,  153, 0.30);
+  }
+  100% {
+    box-shadow:
+      inset 0 0  0px  0px rgba(139, 92,  246, 0),
+      inset 0 0  0px  0px rgba(255, 90,    0, 0),
+      inset 0 0  0px  0px rgba(236, 72,  153, 0);
+  }
+}
+
+.sonar-pulse {
+  position: relative;
+  animation: sonarPulse 1.2s ease-out infinite;
+}
+
+/* 2. ve 3. dalga katmanı — pseudo-element'lerle staggered ripple */
+.sonar-pulse::before,
+.sonar-pulse::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  pointer-events: none;
+  animation: sonarPulse 1.2s ease-out infinite;
+}
+
+.sonar-pulse::before {
+  animation-delay: 0.4s;
+}
+
+.sonar-pulse::after {
+  animation-delay: 0.8s;
 }

@@ -1,134 +1,247 @@
 "use client";
-import React, { useState } from 'react';
-import { motion } from 'framer-motion';
-import { Mail, Phone, MapPin, Send, MessageSquare, ArrowRight, Instagram, Linkedin } from 'lucide-react';
-import Navbar from "@/components/Navbar";
-import Footer from "@/components/Footer";
+
+import { motion } from "framer-motion";
+import { useState, FormEvent } from "react";
+import { Mail, Phone, MapPin, ArrowRight, Instagram, Linkedin, MessageSquare, CheckCircle } from "lucide-react";
+import Footer from "@/components/layout/Footer";
+import { reveal } from "@/lib/animations";
+
+interface FormData {
+  name: string;
+  email: string;
+  phone: string;
+  service: string;
+  message: string;
+}
+
+const services = ["Web Tasarım", "Sosyal Medya", "Kamera & Prodüksiyon", "Post Prodüksiyon", "Tüm Hizmetler"];
+
+const inputBase = "w-full bg-transparent border-b border-neutral-200 py-4 px-0 text-black text-base placeholder:text-neutral-300 focus:outline-none focus:border-[#FF5A00] transition-colors duration-300";
 
 export default function ContactPage() {
-  const [formState, setFormState] = useState({ name: '', email: '', message: '' });
+  const [form, setForm] = useState<FormData>({ name: "", email: "", phone: "", service: "", message: "" });
+  const [submitted, setSubmitted] = useState(false);
+  const [loading, setLoading] = useState(false);
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
+    setForm(prev => ({ ...prev, [e.target.name]: e.target.value }));
+  };
+
+  const handleSubmit = async (e: FormEvent) => {
+    e.preventDefault();
+    setLoading(true);
+    // Gerçek API entegrasyonu için buraya POST fetch eklenebilir
+    // await fetch("/api/contact", { method: "POST", body: JSON.stringify(form) });
+    await new Promise(r => setTimeout(r, 900)); // Demo delay
+    console.log("Form data:", form);
+    setLoading(false);
+    setSubmitted(true);
+  };
 
   return (
-    <div className="bg-[#050505] text-white selection:bg-rose-500 font-sans overflow-x-hidden">
-      <Navbar />
+    <div className="relative z-10 bg-[#050505]">
 
-      {/* 1. HERO - SİYAHI KIRAN ATMOSFERİK GİRİŞ */}
-      <section className="min-h-[80vh] flex flex-col items-center justify-center text-center px-6 relative">
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_#f43f5e08_0%,transparent_65%)]" />
-        
-        <motion.div 
-          initial={{ opacity: 0, y: 30 }} 
-          animate={{ opacity: 1, y: 0 }} 
-          transition={{ duration: 0.8 }}
-          className="z-10"
+      {/* ── HERO ─────────────────────────────────── */}
+      <section className="min-h-[55vh] flex flex-col items-center justify-center text-center px-6 pt-24 relative overflow-hidden">
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_rgba(255,90,0,0.06)_0%,transparent_60%)] pointer-events-none" />
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
+          className="relative z-10 max-w-4xl mx-auto"
         >
-          <span className="text-rose-500 font-mono tracking-[0.4em] text-[10px] uppercase mb-6 block underline underline-offset-8">Bize Ulaşın</span>
-          <h1 className="text-7xl md:text-[130px] font-bold tracking-tighter leading-none mb-8 uppercase">
-            BİRLİKTE <br /> <span className="text-neutral-700 outline-text italic">BAŞLAYALIM.</span>
+          <span className="block text-[10px] font-mono uppercase tracking-[0.5em] text-[#FF5A00] mb-8">Bize Ulaşın</span>
+          <h1 className="text-[56px] sm:text-[80px] md:text-[112px] font-medium tracking-[-0.05em] leading-[0.88] text-white uppercase">
+            Projeyi<br />
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#FF5A00] via-[#FF7AB6] to-[#4D8DFF] italic">Başlatalım.</span>
           </h1>
-          <p className="text-neutral-400 text-xl md:text-2xl max-w-2xl mx-auto font-light leading-relaxed">
-            Fikirleriniz, bizim vizyonumuzla birleştiğinde dijital bir başyapıta dönüşür. Stüdyomuza davetlisiniz.
-          </p>
         </motion.div>
       </section>
 
-      {/* 2. İLETİŞİM KARTLARI VE FORM (ÜST ÜSTE BİNEN KATMANLAR) */}
-      <section className="py-20 bg-white text-black rounded-t-[60px] relative z-20 -mt-20 shadow-[0_-50px_100px_rgba(0,0,0,0.5)]">
-        <div className="max-w-7xl mx-auto px-6 grid grid-cols-1 lg:grid-cols-12 gap-16">
-          
-          {/* Sol Kolon: Bilgiler */}
-          <div className="lg:col-span-5 space-y-12">
-            <div>
-              <h2 className="text-5xl font-bold tracking-tighter mb-8 uppercase italic leading-none">İLETİŞİM <br /> <span className="text-rose-500">KANALLARI.</span></h2>
-              <p className="text-neutral-500 text-lg font-light leading-relaxed">İzmit’in kalbindeki stüdyomuzda sizi ağırlamaktan mutluluk duyarız. Dijital dünyayı bir kahve eşliğinde konuşalım.</p>
-            </div>
+      {/* ── FORM + BİLGİLER — beyaz section ─────── */}
+      <section className="bg-white text-black rounded-t-[3rem] relative z-20 -mt-8 shadow-[0_-40px_80px_rgba(0,0,0,0.4)]">
+        <div className="max-w-7xl mx-auto px-6 py-20 md:py-32">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 md:gap-24">
 
-            <div className="space-y-8">
-              <motion.div whileHover={{ x: 10 }} className="flex items-center gap-6 group">
-                <div className="w-14 h-14 rounded-2xl bg-neutral-50 flex items-center justify-center group-hover:bg-rose-500 group-hover:text-white transition-all">
-                  <Mail size={24} />
-                </div>
-                <div>
-                  <p className="text-xs font-mono text-neutral-400 uppercase tracking-widest mb-1">E-posta</p>
-                  <p className="text-xl font-bold">hello@izmitajans.com</p>
-                </div>
+            {/* Sol: İletişim Bilgileri */}
+            <div className="lg:col-span-5 space-y-12">
+              <motion.div variants={reveal} initial="hidden" whileInView="visible" viewport={{ once: false, amount: 0.2 }}>
+                <h2 className="text-4xl md:text-6xl font-medium tracking-[-0.04em] uppercase leading-[0.9] mb-6">
+                  İletişim<br />
+                  <span className="text-[#FF5A00] italic">Kanalları.</span>
+                </h2>
+                <p className="text-neutral-500 font-light leading-relaxed">
+                  İzmit&apos;in kalbindeki stüdyomuzda sizi ağırlamaktan mutluluk duyarız. Dijital dünyayı bir kahve eşliğinde konuşalım.
+                </p>
               </motion.div>
 
-              <motion.div whileHover={{ x: 10 }} className="flex items-center gap-6 group">
-                <div className="w-14 h-14 rounded-2xl bg-neutral-50 flex items-center justify-center group-hover:bg-rose-500 group-hover:text-white transition-all">
-                  <Phone size={24} />
-                </div>
-                <div>
-                  <p className="text-xs font-mono text-neutral-400 uppercase tracking-widest mb-1">Telefon</p>
-                  <p className="text-xl font-bold">+90 (532) 000 00 00</p>
-                </div>
+              <motion.div variants={reveal} initial="hidden" whileInView="visible" viewport={{ once: false, amount: 0.2 }} className="space-y-6">
+                {[
+                  { icon: Mail, label: "E-posta", value: "hello@izmitsosyalmedya.com", href: "mailto:hello@izmitsosyalmedya.com" },
+                  { icon: Phone, label: "Telefon", value: "+90 (532) 000 00 00", href: "tel:+905320000000" },
+                  { icon: MapPin, label: "Adres", value: "Körfez Mah. İzmit / Kocaeli", href: "#" },
+                ].map((item, i) => {
+                  const Icon = item.icon;
+                  return (
+                    <motion.a
+                      key={i}
+                      href={item.href}
+                      whileHover={{ x: 8 }}
+                      className="flex items-center gap-5 group"
+                    >
+                      <div className="w-12 h-12 rounded-2xl bg-neutral-100 flex items-center justify-center group-hover:bg-[#FF5A00] group-hover:text-white transition-all duration-400">
+                        <Icon size={20} />
+                      </div>
+                      <div>
+                        <p className="text-[9px] uppercase tracking-widest font-mono text-neutral-400 mb-0.5">{item.label}</p>
+                        <p className="font-semibold text-lg">{item.value}</p>
+                      </div>
+                    </motion.a>
+                  );
+                })}
               </motion.div>
 
-              <motion.div whileHover={{ x: 10 }} className="flex items-center gap-6 group">
-                <div className="w-14 h-14 rounded-2xl bg-neutral-50 flex items-center justify-center group-hover:bg-rose-500 group-hover:text-white transition-all">
-                  <MapPin size={24} />
-                </div>
-                <div>
-                  <p className="text-xs font-mono text-neutral-400 uppercase tracking-widest mb-1">Adres</p>
-                  <p className="text-xl font-bold">Körfez Mah. İzmit / Kocaeli</p>
-                </div>
+              <motion.div variants={reveal} initial="hidden" whileInView="visible" viewport={{ once: false, amount: 0.2 }} className="flex gap-3 pt-8 border-t border-neutral-100">
+                {[
+                  { icon: Instagram, href: "https://instagram.com/izmitsosyalmedia", label: "Instagram" },
+                  { icon: Linkedin, href: "https://linkedin.com/company/izmitsosyalmedya", label: "LinkedIn" },
+                  { icon: MessageSquare, href: "https://wa.me/905320000000", label: "WhatsApp" },
+                ].map((s, i) => {
+                  const Icon = s.icon;
+                  return (
+                    <a key={i} href={s.href} target="_blank" rel="noopener noreferrer" aria-label={s.label}
+                      className="w-12 h-12 rounded-full border border-neutral-200 flex items-center justify-center hover:bg-black hover:text-white hover:border-black transition-all duration-400">
+                      <Icon size={18} />
+                    </a>
+                  );
+                })}
               </motion.div>
             </div>
 
-            {/* Sosyal Medya İkonları */}
-            <div className="flex gap-4 pt-10 border-t border-neutral-100">
-              <a href="#" className="w-12 h-12 rounded-full border border-neutral-200 flex items-center justify-center hover:bg-black hover:text-white transition-all"><Instagram size={20} /></a>
-              <a href="#" className="w-12 h-12 rounded-full border border-neutral-200 flex items-center justify-center hover:bg-black hover:text-white transition-all"><Linkedin size={20} /></a>
-              <a href="#" className="w-12 h-12 rounded-full border border-neutral-200 flex items-center justify-center hover:bg-black hover:text-white transition-all"><MessageSquare size={20} /></a>
-            </div>
-          </div>
-
-          {/* Sağ Kolon: Form */}
-          <div className="lg:col-span-7 bg-neutral-50 p-8 md:p-16 rounded-[4rem] border border-neutral-100">
-            <h3 className="text-3xl font-bold mb-10 tracking-tighter uppercase italic">HIZLI TEKLİF FORMU</h3>
-            <form className="space-y-6">
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <input 
-                  type="text" 
-                  placeholder="Adınız ve Soyadınız" 
-                  className="w-full bg-white border border-neutral-200 rounded-3xl px-8 py-5 focus:outline-none focus:ring-2 focus:ring-rose-500/20 transition-all placeholder:text-neutral-300"
-                />
-                <input 
-                  type="email" 
-                  placeholder="E-posta Adresiniz" 
-                  className="w-full bg-white border border-neutral-200 rounded-3xl px-8 py-5 focus:outline-none focus:ring-2 focus:ring-rose-500/20 transition-all placeholder:text-neutral-300"
-                />
-              </div>
-              <input 
-                type="text" 
-                placeholder="Hangi hizmetle ilgileniyorsunuz?" 
-                className="w-full bg-white border border-neutral-200 rounded-3xl px-8 py-5 focus:outline-none focus:ring-2 focus:ring-rose-500/20 transition-all placeholder:text-neutral-300"
-              />
-              <textarea 
-                rows={5} 
-                placeholder="Projenizden kısaca bahsedin..." 
-                className="w-full bg-white border border-neutral-200 rounded-3xl px-8 py-5 focus:outline-none focus:ring-2 focus:ring-rose-500/20 transition-all placeholder:text-neutral-300 resize-none"
-              ></textarea>
-              <button 
-                type="submit" 
-                className="w-full bg-black text-white py-6 rounded-full font-bold text-lg hover:bg-rose-500 transition-all flex items-center justify-center gap-3 group"
+            {/* Sağ: Form */}
+            <div className="lg:col-span-7">
+              <motion.div variants={reveal} initial="hidden" whileInView="visible" viewport={{ once: false, amount: 0.2 }}
+                className="bg-neutral-50 rounded-[3rem] p-8 md:p-12 border border-neutral-100"
               >
-                GÖNDER <ArrowRight size={20} className="group-hover:translate-x-2 transition-transform" />
-              </button>
-            </form>
+                {submitted ? (
+                  <motion.div
+                    initial={{ opacity: 0, scale: 0.95 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    className="flex flex-col items-center justify-center py-20 text-center"
+                  >
+                    <CheckCircle size={56} className="text-[#FF5A00] mb-6" />
+                    <h3 className="text-3xl font-bold tracking-tighter uppercase mb-4">Mesajınız Alındı!</h3>
+                    <p className="text-neutral-500 font-light leading-relaxed max-w-sm">
+                      En kısa sürede size dönüş yapacağız. Teşekkür ederiz.
+                    </p>
+                  </motion.div>
+                ) : (
+                  <form onSubmit={handleSubmit} className="space-y-8">
+                    <h3 className="text-2xl font-bold tracking-tighter uppercase mb-8">Hızlı Teklif Formu</h3>
+
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                      <div>
+                        <label className="text-[9px] uppercase tracking-widest font-mono text-neutral-400 block mb-2">Ad Soyad *</label>
+                        <input
+                          type="text"
+                          name="name"
+                          value={form.name}
+                          onChange={handleChange}
+                          required
+                          placeholder="Adınızı girin"
+                          className={inputBase}
+                        />
+                      </div>
+                      <div>
+                        <label className="text-[9px] uppercase tracking-widest font-mono text-neutral-400 block mb-2">E-posta *</label>
+                        <input
+                          type="email"
+                          name="email"
+                          value={form.email}
+                          onChange={handleChange}
+                          required
+                          placeholder="email@orneksite.com"
+                          className={inputBase}
+                        />
+                      </div>
+                    </div>
+
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                      <div>
+                        <label className="text-[9px] uppercase tracking-widest font-mono text-neutral-400 block mb-2">Telefon</label>
+                        <input
+                          type="tel"
+                          name="phone"
+                          value={form.phone}
+                          onChange={handleChange}
+                          placeholder="+90 5xx xxx xx xx"
+                          className={inputBase}
+                        />
+                      </div>
+                      <div>
+                        <label className="text-[9px] uppercase tracking-widest font-mono text-neutral-400 block mb-2">İlgilendiğiniz Hizmet</label>
+                        <select
+                          name="service"
+                          value={form.service}
+                          onChange={handleChange}
+                          className={`${inputBase} cursor-pointer`}
+                        >
+                          <option value="">Seçiniz</option>
+                          {services.map(s => <option key={s} value={s}>{s}</option>)}
+                        </select>
+                      </div>
+                    </div>
+
+                    <div>
+                      <label className="text-[9px] uppercase tracking-widest font-mono text-neutral-400 block mb-2">Projenizden Bahsedin *</label>
+                      <textarea
+                        name="message"
+                        value={form.message}
+                        onChange={handleChange}
+                        required
+                        rows={4}
+                        placeholder="Projeniz hakkında kısa bir açıklama yapın..."
+                        className={`${inputBase} resize-none`}
+                      />
+                    </div>
+
+                    <button
+                      type="submit"
+                      disabled={loading}
+                      className="group w-full flex items-center justify-center gap-3 bg-black text-white py-5 rounded-full font-semibold text-sm uppercase tracking-widest hover:bg-[#FF5A00] disabled:opacity-60 transition-all duration-500"
+                    >
+                      {loading ? "Gönderiliyor..." : "Mesajı Gönder"}
+                      <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
+                    </button>
+                  </form>
+                )}
+              </motion.div>
+            </div>
           </div>
         </div>
       </section>
 
-      {/* 3. BÖLÜM: WHATSAPP QUICK ACCESS */}
-      <section className="py-32 bg-white text-center">
-        <div className="max-w-4xl mx-auto px-6 border-t border-neutral-100 pt-32">
-          <h2 className="text-5xl md:text-8xl font-bold tracking-tighter leading-none mb-10 uppercase italic">ZAMAN <br /> <span className="text-rose-500">DEĞERLİDİR.</span></h2>
-          <p className="text-neutral-500 text-xl mb-12 font-light">Form doldurmak istemiyor musunuz? Doğrudan WhatsApp hattımız üzerinden uzmanımızla iletişime geçin.</p>
-          <a href="https://wa.me/905320000000" target="_blank" className="inline-flex items-center gap-4 bg-[#25D366] text-white px-12 py-6 rounded-full font-bold text-xl hover:scale-110 transition-transform shadow-2xl">
-            WhatsApp&apos;tan Yazın <ArrowRight size={24} />
+      {/* ── WHATSAPP ──────────────────────────────── */}
+      <section className="py-32 md:py-48 px-6 bg-white border-t border-neutral-100">
+        <motion.div variants={reveal} initial="hidden" whileInView="visible" viewport={{ once: false, amount: 0.3 }} className="max-w-4xl mx-auto text-center">
+          <h2 className="text-5xl md:text-8xl font-medium tracking-[-0.04em] uppercase leading-[0.9] mb-8">
+            Zaman<br />
+            <span className="text-[#FF5A00] italic font-medium">Değerlidir.</span>
+          </h2>
+          <p className="text-neutral-500 text-xl font-light mb-12 max-w-md mx-auto leading-relaxed">
+            Form doldurmak istemiyorsanız doğrudan WhatsApp hattımızdan yazın.
+          </p>
+          <a
+            href="https://wa.me/905320000000"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="group inline-flex items-center gap-4 bg-[#25D366] text-white px-12 py-5 rounded-full font-semibold text-lg hover:scale-105 transition-transform duration-300 shadow-xl shadow-green-200"
+          >
+            <MessageSquare size={22} />
+            WhatsApp&apos;tan Yazın
+            <ArrowRight size={20} className="group-hover:translate-x-1 transition-transform" />
           </a>
-        </div>
+        </motion.div>
       </section>
 
       <Footer />
