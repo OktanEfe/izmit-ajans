@@ -1,5 +1,6 @@
 "use client";
 import Link from "next/link";
+import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
@@ -24,32 +25,33 @@ export default function Navbar() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  // Route değişince menüyü kapat
-  useEffect(() => { setIsOpen(false); }, [pathname]);
+  useEffect(() => {
+    const t = setTimeout(() => setIsOpen(false), 0);
+    return () => clearTimeout(t);
+  }, [pathname]);
 
   return (
     <>
-      {/* ─── Floating Pill Navbar ─────────────────────────── */}
-      <div className="fixed top-6 left-0 right-0 z-[100] flex justify-center px-4 md:px-6 pointer-events-none">
+      <div className="fixed top-0 left-0 right-0 z-[100] flex justify-center px-4 md:px-6 pointer-events-none pt-6">
         <header
           className={`
             pointer-events-auto transition-all duration-700 ease-[cubic-bezier(0.16,1,0.3,1)]
             flex items-center justify-between px-6 md:px-10 py-3 rounded-full border
             ${isScrolled || isOpen
-              ? "w-full max-w-[1000px] bg-black/80 backdrop-blur-md border-white/10 shadow-[0_8px_32px_rgba(0,0,0,0.4)]"
+              ? "w-full max-w-[1000px] bg-black/70 backdrop-blur-md border-white/10 shadow-[0_8px_32px_rgba(0,0,0,0.4)]"
               : "w-full max-w-[1200px] bg-transparent border-transparent"}
           `}
         >
-          {/* Logo */}
           <Link href="/" className="shrink-0 transition-transform hover:scale-105 active:scale-95">
-            <img
+            <Image
               src="/logov2.svg"
-              alt="İzmit SM Logo"
+              alt="İzmit Sosyal Medya Logo"
+              width={120}
+              height={40}
               className="h-8 md:h-10 w-auto object-contain filter grayscale brightness-90"
             />
           </Link>
 
-          {/* Desktop Links */}
           <nav className="hidden lg:flex items-center space-x-6 xl:space-x-10">
             {navLinks.map((item) => (
               <Link
@@ -76,7 +78,6 @@ export default function Navbar() {
             </Link>
           </nav>
 
-          {/* Mobile Hamburger */}
           <button
             onClick={() => setIsOpen((v) => !v)}
             aria-label={isOpen ? "Menüyü kapat" : "Menüyü aç"}
@@ -109,7 +110,6 @@ export default function Navbar() {
         </header>
       </div>
 
-      {/* ─── Mobile Full-Screen Menu ──────────────────────── */}
       <AnimatePresence>
         {isOpen && (
           <motion.div
@@ -156,14 +156,13 @@ export default function Navbar() {
               </motion.div>
             </nav>
 
-            {/* Alt bilgi */}
             <motion.p
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 0.5 }}
               className="absolute bottom-10 text-neutral-600 font-mono text-[9px] uppercase tracking-[0.4em]"
             >
-              İzmit Creative Studio
+              İzmit Sosyal Medya
             </motion.p>
           </motion.div>
         )}

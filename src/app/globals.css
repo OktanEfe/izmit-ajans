@@ -18,14 +18,10 @@ body {
   font-family: var(--font-geist-sans), Arial, Helvetica, sans-serif;
 }
 
-/* ============================================================
-   GLOBAL HEADING FIX
-   g, j, p, q, y gibi descender harflerin alt kuyruğunu kesen
-   overflow:hidden ve dar line-height sorununu global çöz
-   ============================================================ */
 h1, h2, h3, h4, h5, h6 {
   overflow: visible !important;
   padding-bottom: 0.15em;
+  line-height: 1.25;
 }
 
 @layer utilities {
@@ -35,30 +31,46 @@ h1, h2, h3, h4, h5, h6 {
   }
 }
 
-/* ============================================================
-   APPLE INTELLIGENCE ANIMATED BORDER
-   Conic-gradient dönen border — Hero section için
-   ============================================================ */
+/* ─── Border flow ─── */
 @property --angle {
   syntax: '<angle>';
   inherits: false;
   initial-value: 0deg;
 }
 
-@keyframes borderSpin {
+@keyframes borderFlow {
   to { --angle: 360deg; }
+}
+
+@keyframes borderWave {
+  0%, 100% { border-radius: 32px; }
+  25%       { border-radius: 38px 26px 36px 28px; }
+  50%       { border-radius: 28px 36px 26px 38px; }
+  75%       { border-radius: 36px 28px 38px 26px; }
+}
+
+/* Gentle brightness glow — no hue-rotate, keeps orange/blue/purple */
+@keyframes borderGlow {
+  0%, 100% { filter: brightness(1.1); }
+  25%       { filter: brightness(1.6) blur(0.4px); }
+  50%       { filter: brightness(0.9); }
+  75%       { filter: brightness(1.5) blur(0.3px); }
 }
 
 .hero-animated-border {
   background: conic-gradient(
     from var(--angle),
-    #8B5CF6,
-    #EC4899,
     #FF5A00,
     #4D8DFF,
-    #8B5CF6
+    #8B5CF6,
+    #FF5A00
   );
-  animation: borderSpin 4s linear infinite;
+  /* 7 px thickness */
+  padding: 7px;
+  animation:
+    borderFlow  8s  linear      infinite,
+    borderGlow  6s  ease-in-out infinite,
+    borderWave  9s  ease-in-out infinite;
   -webkit-mask:
     linear-gradient(#fff 0 0) content-box,
     linear-gradient(#fff 0 0);
@@ -66,51 +78,91 @@ h1, h2, h3, h4, h5, h6 {
   mask-composite: exclude;
 }
 
-/* ============================================================
-   SONAR PULSE — İçeriye doğru ses dalgası titreşimi
-   3 katmanlı ripple: mor + turuncu + pembe — 0.4s arayla tetiklenir
-   ============================================================ */
-@keyframes sonarPulse {
-  0% {
-    box-shadow:
-      inset 0 0  0px  0px rgba(139, 92,  246, 0),
-      inset 0 0  0px  0px rgba(255, 90,    0, 0),
-      inset 0 0  0px  0px rgba(236, 72,  153, 0);
-  }
-  40% {
-    box-shadow:
-      inset 0 0 20px  6px rgba(139, 92,  246, 0.45),
-      inset 0 0 40px 12px rgba(255, 90,    0, 0.25),
-      inset 0 0 30px  8px rgba(236, 72,  153, 0.30);
-  }
-  100% {
-    box-shadow:
-      inset 0 0  0px  0px rgba(139, 92,  246, 0),
-      inset 0 0  0px  0px rgba(255, 90,    0, 0),
-      inset 0 0  0px  0px rgba(236, 72,  153, 0);
-  }
+/* ─── Equalizer wave — multiple layers at different phases ─── */
+@keyframes eqWaveA {
+  0%, 100% { filter: brightness(1.0) blur(0px); }
+  22%      { filter: brightness(1.75) blur(0.8px); }
+  50%      { filter: brightness(0.85); }
+  74%      { filter: brightness(1.55) blur(0.5px); }
+}
+@keyframes eqWaveB {
+  0%, 100% { filter: brightness(0.9); }
+  18%      { filter: brightness(1.6) blur(0.6px); }
+  42%      { filter: brightness(1.0); }
+  70%      { filter: brightness(1.45) blur(0.4px); }
+  88%      { filter: brightness(0.85); }
+}
+@keyframes eqWaveC {
+  0%, 100% { opacity: 0.55; }
+  15%      { opacity: 1; }
+  35%      { opacity: 0.4; }
+  60%      { opacity: 0.9; }
+  80%      { opacity: 0.5; }
 }
 
-.sonar-pulse {
-  position: relative;
-  animation: sonarPulse 1.2s ease-out infinite;
-}
-
-/* 2. ve 3. dalga katmanı — pseudo-element'lerle staggered ripple */
-.sonar-pulse::before,
-.sonar-pulse::after {
-  content: '';
-  position: absolute;
-  inset: 0;
+/* Layer 1 — main equalizer (2.1 s) */
+.hero-eq-layer1 {
+  animation: eqWaveA 2.1s ease-in-out infinite;
   border-radius: inherit;
   pointer-events: none;
-  animation: sonarPulse 1.2s ease-out infinite;
+}
+/* Layer 2 — slightly offset (3.3 s, delay 0.7 s) */
+.hero-eq-layer2 {
+  animation: eqWaveB 3.3s ease-in-out infinite 0.7s;
+  border-radius: inherit;
+  pointer-events: none;
+}
+/* Layer 3 — opacity pulse (1.7 s, delay 0.35 s) */
+.hero-eq-layer3 {
+  animation: eqWaveC 1.7s ease-in-out infinite 0.35s;
+  border-radius: inherit;
+  pointer-events: none;
 }
 
-.sonar-pulse::before {
-  animation-delay: 0.4s;
+/* ─── Orb animations ─── */
+@keyframes heroGlow {
+  0%, 100% { opacity: 0.06; transform: scale(1)    translateY(0px); }
+  50%       { opacity: 0.12; transform: scale(1.05) translateY(-15px); }
+}
+@keyframes heroGlow2 {
+  0%, 100% { opacity: 0.04; transform: scale(1)    translateX(0px); }
+  40%       { opacity: 0.09; transform: scale(1.08) translateX(20px); }
+  70%       { opacity: 0.06; transform: scale(0.95) translateX(-15px); }
+}
+@keyframes heroGlow3 {
+  0%, 100% { opacity: 0.05; transform: scale(1)    translate(0, 0); }
+  33%       { opacity: 0.10; transform: scale(1.06) translate(15px, -20px); }
+  66%       { opacity: 0.07; transform: scale(0.94) translate(-10px, 10px); }
 }
 
-.sonar-pulse::after {
-  animation-delay: 0.8s;
+.hero-orb-1 { animation: heroGlow  18s ease-in-out infinite; }
+.hero-orb-2 { animation: heroGlow2 22s ease-in-out infinite; }
+.hero-orb-3 { animation: heroGlow3 16s ease-in-out infinite; }
+
+@keyframes gridPulse {
+  0%, 100% { opacity: 0.025; }
+  50%       { opacity: 0.06; }
+}
+.hero-grid { animation: gridPulse 6s ease-in-out infinite; }
+
+@keyframes ringRotate    { to { transform: rotate(360deg);  } }
+@keyframes ringRotateRev { to { transform: rotate(-360deg); } }
+
+/* ─── Intro shimmer (right → left) ─── */
+@keyframes shimmerSweep {
+  0%   { transform: translateX(120%); opacity: 0; }
+  10%  { opacity: 1; }
+  90%  { opacity: 1; }
+  100% { transform: translateX(-120%); opacity: 0; }
+}
+.intro-shimmer {
+  animation: shimmerSweep 0.85s ease-in-out forwards;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(255,255,255,0.08) 20%,
+    rgba(255,255,255,0.55) 50%,
+    rgba(255,255,255,0.08) 80%,
+    transparent 100%
+  );
 }
