@@ -49,7 +49,7 @@ export default function WhatsAppCTA() {
           </p>
 
           <a
-            href="https://wa.me/905320000000"
+            href="https://wa.me/905526660306"
             target="_blank"
             rel="noopener noreferrer"
             className="group relative inline-flex items-center gap-4 overflow-hidden rounded-full text-white px-12 py-5 font-semibold text-base transition-all duration-500 hover:scale-105"
