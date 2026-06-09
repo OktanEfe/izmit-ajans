@@ -5,15 +5,14 @@ import { Mail, Phone, MapPin, Instagram, Linkedin, MessageSquare } from "lucide-
 import { reveal } from "@/lib/animations";
 
 const contactItems = [
-  { icon: Mail, label: "E-posta", value: "hello@izmitsosyalmedya.com", href: "mailto:hello@izmitsosyalmedya.com" },
-  { icon: Phone, label: "Telefon", value: "+90 (532) 000 00 00", href: "tel:+905320000000" },
-  { icon: MapPin, label: "Adres", value: "Körfez Mah. İzmit / Kocaeli", href: "#" },
+  { icon: Mail, label: "E-posta", value: "info@izmitsosyalmedya.com", href: "mailto:info@izmitsosyalmedya.com" },
+  { icon: Phone, label: "Telefon", value: "0552 666 03 06", href: "tel:+905526660306" },
 ];
 
 const socialLinks = [
   { icon: Instagram, href: "https://instagram.com/izmitsosyalmedia", label: "Instagram" },
   { icon: Linkedin, href: "https://linkedin.com/company/izmitsosyalmedya", label: "LinkedIn" },
-  { icon: MessageSquare, href: "https://wa.me/905320000000", label: "WhatsApp" },
+  { icon: MessageSquare, href: "https://wa.me/905526660306", label: "WhatsApp" },
 ];
 
 export default function ContactInfo() {

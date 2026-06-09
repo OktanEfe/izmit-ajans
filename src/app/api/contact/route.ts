@@ -38,7 +38,7 @@ export async function POST(req: NextRequest) {
             <p style="color:#999;margin-bottom:8px">Mesaj</p>
             <p style="background:#111;padding:20px;border-radius:8px;line-height:1.6;white-space:pre-wrap">${message}</p>
           </div>
-          <p style="color:#444;font-size:12px;margin-top:32px">Bu e-posta izmitsosyalmedya.com iletişim formundan gönderilmiştir.</p>
+          <p style="color:#444;font-size:12px;margin-top:32px">Bu e-posta izmitsosyalmedia.com iletişim formundan gönderilmiştir.</p>
         </div>
       `,
     });
