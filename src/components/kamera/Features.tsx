@@ -12,12 +12,12 @@ interface Feature {
 }
 
 const features: Feature[] = [
-  { icon: Film,      num: "01", title: "Sinematik Kurgu",  desc: "DaVinci Resolve ile görüntüleri hikayeye dönüştürüyoruz." },
-  { icon: Sparkles,  num: "02", title: "4K HDR Kayıt",     desc: "En derin renkler, en keskin detaylar — tüm sahnelerde." },
-  { icon: Plane,     num: "03", title: "Drone / Hava",      desc: "DJI Mavic 3 ile sinematik aerial görüntüler." },
-  { icon: Zap,       num: "04", title: "Tanıtım Filmi",     desc: "Kurumsal ve ürün tanıtım filmleri — reklam kalitesinde." },
-  { icon: Camera,    num: "05", title: "Color Grading",     desc: "Renk manipülasyonu ile atmosfer yaratma." },
-  { icon: Crosshair, num: "06", title: "Ses Tasarımı",      desc: "Profesyonel ses kaydı ve post-prodüksiyon." },
+  { icon: Film,      num: "01", title: "Sinematik Kurgu",       desc: "İzleyeni durduran anlar — hikayeniz perdede hayat buluyor." },
+  { icon: Sparkles,  num: "02", title: "Trendlere Uygun Çekim", desc: "Zamanın nabzını tutan kareler, markanızı gündemde tutar." },
+  { icon: Plane,     num: "03", title: "Drone / Hava",           desc: "Perspektifi değiştiren görseller, bakış açınızı yükseltir." },
+  { icon: Zap,       num: "04", title: "Tanıtım Filmi",          desc: "Markanızı hatırlanır kılan, duyguda iz bırakan prodüksiyon." },
+  { icon: Camera,    num: "05", title: "Color Grading",          desc: "Her kare, hissetmek istediğiniz atmosferi taşır." },
+  { icon: Crosshair, num: "06", title: "Ses Tasarımı",           desc: "Görüntüyü tamamlayan ses — hikayenizi bütünleştiriyor." },
 ];
 
 export default function Features() {

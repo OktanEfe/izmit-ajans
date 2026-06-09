@@ -49,7 +49,7 @@ export default function Hero() {
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1], delay: 0.1 }}
-          className="text-[56px] sm:text-[80px] md:text-[110px] font-medium tracking-[-0.05em] leading-[0.88] text-white uppercase"
+          className="text-[38px] sm:text-[56px] md:text-[80px] lg:text-[110px] font-medium tracking-[-0.05em] leading-[0.88] text-white uppercase"
         >
           Görsel<br />
           <span className="text-[#FF5A00] italic">Mükemmellik.</span>

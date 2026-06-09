@@ -113,6 +113,7 @@ export default function Hero() {
         <div className="hero-eq-layer3 absolute inset-0 rounded-[32px] sm:rounded-[48px]" />
       </div>
 
+      {/* Title + paragraph scroll with parallax */}
       <motion.div
         style={{ y: textY, opacity: textOpacity }}
         className="relative z-20 w-full max-w-6xl mx-auto flex flex-col items-center text-center"
@@ -121,10 +122,10 @@ export default function Hero() {
           initial={{ opacity: 0, scale: 0.95 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1], delay: 0.1 }}
-          className="mb-12"
+          className="mb-8"
         />
 
-        <h1 className="text-[58px] sm:text-[104px] md:text-[136px] font-medium tracking-[-0.05em] leading-[0.9] pb-4 text-neutral-100 flex flex-col items-center">
+        <h1 className="text-[48px] sm:text-[88px] md:text-[116px] font-medium tracking-[-0.05em] leading-[0.9] pb-4 text-neutral-100 flex flex-col items-center">
           <motion.span
             variants={typewriterContainer}
             initial="hidden"
@@ -156,36 +157,37 @@ export default function Hero() {
           variants={fadeUpVariants}
           initial="hidden"
           animate="visible"
-          className="mt-12 text-white text-base sm:text-lg md:text-xl font-light max-w-xl tracking-normal leading-relaxed text-balance"
+          className="mt-6 text-white text-sm sm:text-base md:text-lg font-light max-w-xl tracking-normal leading-relaxed text-balance"
         >
           Sıradanlığı değil, yeni dijital standartları kurguluyoruz. Markanızı karanlığın asaletinde zirveye konumlandıran rafine dokunuşlar.
         </motion.p>
+      </motion.div>
 
-        <motion.div
-          variants={fadeUpVariants}
-          initial="hidden"
-          animate="visible"
-          className="mt-16 flex flex-col sm:flex-row items-center gap-8 sm:gap-12"
+      {/* Buttons: NO parallax — stay fixed relative to hero */}
+      <motion.div
+        variants={fadeUpVariants}
+        initial="hidden"
+        animate="visible"
+        className="relative z-20 mt-10 flex flex-col sm:flex-row items-center gap-8 sm:gap-12"
+      >
+        <Link href="/iletisim" className="group relative block">
+          <div className="absolute -inset-[3px] rounded-full bg-gradient-to-r from-[#FF5A00] via-[#FF7AB6] to-[#4D8DFF] opacity-0 blur-[12px] group-hover:opacity-80 transition-all duration-700 ease-[0.16,1,0.3,1] group-hover:scale-105" />
+          <div className="relative flex items-center gap-3 bg-white text-black px-10 py-5 sm:px-12 rounded-full text-sm sm:text-base font-semibold tracking-wide shadow-[0_20px_40px_rgba(255,90,0,0.1)] transition-all duration-500 ease-[0.16,1,0.3,1] group-hover:scale-105 group-hover:bg-neutral-50 active:scale-[0.98]">
+            <span>Proje Başlat</span>
+            <ArrowUpRight
+              className="text-black/80 transition-transform duration-500 ease-[0.16,1,0.3,1] group-hover:translate-x-1 group-hover:-translate-y-1 group-hover:text-black"
+              size={18}
+            />
+          </div>
+        </Link>
+
+        <Link
+          href="/hizmetler"
+          className="group relative text-base font-medium tracking-wide text-neutral-400 hover:text-white transition-all duration-400 py-3 block transform group-hover:scale-105"
         >
-          <Link href="/iletisim" className="group relative block">
-            <div className="absolute -inset-[3px] rounded-full bg-gradient-to-r from-[#FF5A00] via-[#FF7AB6] to-[#4D8DFF] opacity-0 blur-[12px] group-hover:opacity-80 transition-all duration-700 ease-[0.16,1,0.3,1] group-hover:scale-105" />
-            <div className="relative flex items-center gap-3 bg-white text-black px-10 py-5 sm:px-12 rounded-full text-sm sm:text-base font-semibold tracking-wide shadow-[0_20px_40px_rgba(255,90,0,0.1)] transition-all duration-500 ease-[0.16,1,0.3,1] group-hover:scale-105 group-hover:bg-neutral-50 active:scale-[0.98]">
-              <span>Proje Başlat</span>
-              <ArrowUpRight
-                className="text-black/80 transition-transform duration-500 ease-[0.16,1,0.3,1] group-hover:translate-x-1 group-hover:-translate-y-1 group-hover:text-black"
-                size={18}
-              />
-            </div>
-          </Link>
-
-          <Link
-            href="/hizmetler"
-            className="group relative text-base font-medium tracking-wide text-neutral-400 hover:text-white transition-all duration-400 py-3 block transform group-hover:scale-105"
-          >
-            Hizmetlerimizi İnceleyin
-            <span className="absolute bottom-1 left-0 w-full h-[1.5px] bg-gradient-to-r from-[#FF5A00] to-[#4D8DFF] scale-x-0 group-hover:scale-x-100 transition-transform duration-500 ease-[0.16,1,0.3,1] origin-left" />
-          </Link>
-        </motion.div>
+          Hizmetlerimizi İnceleyin
+          <span className="absolute bottom-1 left-0 w-full h-[1.5px] bg-gradient-to-r from-[#FF5A00] to-[#4D8DFF] scale-x-0 group-hover:scale-x-100 transition-transform duration-500 ease-[0.16,1,0.3,1] origin-left" />
+        </Link>
       </motion.div>
     </section>
   );

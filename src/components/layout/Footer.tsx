@@ -3,7 +3,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import { motion } from "framer-motion";
-import { ArrowUpRight, Instagram, Linkedin, Phone, MapPin } from "lucide-react";
+import { ArrowUpRight, InstagramIcon, LinkedinIcon, Phone, MapPin } from "lucide-react";
 
 export default function Footer() {
   const currentYear = new Date().getFullYear();
@@ -75,8 +75,8 @@ export default function Footer() {
               </div>
               <div className="flex items-center gap-3 group">
                 <Phone size={14} className="text-neutral-600 group-hover:text-[#FF5A00] transition-colors" />
-                <a href="tel:+902621234567" className="hover:text-white transition-colors">
-                  +90 (262) 123 45 67
+                <a href="tel:+905526660306" className="hover:text-white transition-colors">
+                  0552 666 03 06
                 </a>
               </div>
             </div>
@@ -109,23 +109,23 @@ export default function Footer() {
             <ul className="flex flex-col gap-4 text-base font-light text-neutral-400">
               <li>
                 <a
-                  href="https://instagram.com/izmitsosyalmedya"
+                  href="https://www.instagram.com/izmitsosyalmedia"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="flex items-center gap-3 transition-all duration-500 hover:text-white hover:tracking-wide group"
                 >
-                  <Instagram size={16} className="text-neutral-600 group-hover:text-[#FF5A00] transition-colors" />
+                  <InstagramIcon size={16} className="text-neutral-600 group-hover:text-[#FF5A00] transition-colors" />
                   <span>Instagram</span>
                 </a>
               </li>
               <li>
                 <a
-                  href="https://linkedin.com/company/izmitsosyalmedya"
+                  href="https://www.linkedin.com/company/izmitsosyalmedia"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="flex items-center gap-3 transition-all duration-500 hover:text-white hover:tracking-wide group"
                 >
-                  <Linkedin size={16} className="text-neutral-600 group-hover:text-[#FF5A00] transition-colors" />
+                  <LinkedinIcon size={16} className="text-neutral-600 group-hover:text-[#FF5A00] transition-colors" />
                   <span>LinkedIn</span>
                 </a>
               </li>

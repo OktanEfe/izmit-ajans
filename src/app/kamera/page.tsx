@@ -23,7 +23,7 @@ export default function CameraPage() {
       <Reveal><Hero /></Reveal>
       <Showcase />
       <Reveal><Features /></Reveal>
-      <Reveal><CTA /></Reveal>
+<Reveal><CTA /></Reveal>
       <Reveal><Footer /></Reveal>
     </div>
   );
