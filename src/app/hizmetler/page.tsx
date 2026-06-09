@@ -9,13 +9,24 @@ import Reveal from "@/components/motion/Reveal";
 
 export const metadata: Metadata = {
   title: "Hizmetlerimiz",
-  description: "Web tasarım, sosyal medya yönetimi, kamera çekimi ve post prodüksiyon. İzmit Sosyal Medya ile dijital dünyadaki varlığınızı güçlendirin.",
-  keywords: ["hizmetler", "web tasarım", "sosyal medya", "kamera çekimi", "prodüksiyon", "dijital ajans", "İzmit"],
+  description:
+    "Web tasarım, sosyal medya yönetimi, profesyonel kamera çekimi ve post prodüksiyon. İzmit Sosyal Medya ile dijital dünyadaki varlığınızı güçlendirin.",
+  keywords: [
+    "hizmetler izmit",
+    "web tasarım izmit",
+    "sosyal medya yönetimi",
+    "kamera çekimi kocaeli",
+    "video prodüksiyon",
+    "dijital ajans hizmetleri",
+  ],
   openGraph: {
     title: "Hizmetlerimiz | İzmit Sosyal Medya",
-    description: "Web tasarım, sosyal medya, kamera çekimi ve prodüksiyon hizmetleri.",
-    url: "https://izmitsosyalmedya.com/hizmetler",
+    description:
+      "Web tasarım, sosyal medya, profesyonel kamera çekimi ve prodüksiyon hizmetleri.",
+    url: "https://izmitsosyalmedia.com/hizmetler",
+    images: [{ url: "/opengraph-image", width: 1200, height: 630, alt: "İzmit Sosyal Medya Hizmetleri" }],
   },
+  alternates: { canonical: "https://izmitsosyalmedia.com/hizmetler" },
 };
 
 export default function ServicesPage() {

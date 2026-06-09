@@ -7,14 +7,25 @@ import Footer from "@/components/layout/Footer";
 import Reveal from "@/components/motion/Reveal";
 
 export const metadata: Metadata = {
-  title: "Kamera & Sinematik Prodüksiyon",
-  description: "4K HDR sinematik çekimler, drone görüntüleri, color grading ve profesyonel ses tasarımı. İzmit'in en premium prodüksiyon ajansı.",
-  keywords: ["kamera çekimi", "sinematik prodüksiyon", "4K çekim", "drone çekim", "color grading", "İzmit"],
+  title: "Profesyonel Çekim & Prodüksiyon",
+  description:
+    "4K HDR sinematik çekimler, drone görüntüleri, color grading ve ses tasarımı. İzmit ve Kocaeli'nin en premium prodüksiyon ajansı.",
+  keywords: [
+    "kamera çekimi izmit",
+    "sinematik prodüksiyon kocaeli",
+    "4k video çekim",
+    "drone çekim izmit",
+    "color grading",
+    "reklam filmi çekim",
+  ],
   openGraph: {
-    title: "Kamera & Sinematik Prodüksiyon | İzmit Sosyal Medya",
-    description: "4K HDR sinematik çekimler, drone görüntüleri, color grading ve ses tasarımı.",
-    url: "https://izmitsosyalmedya.com/kamera",
+    title: "Profesyonel Çekim & Prodüksiyon | İzmit Sosyal Medya",
+    description:
+      "4K HDR sinematik çekimler, drone görüntüleri, color grading ve ses tasarımı.",
+    url: "https://izmitsosyalmedia.com/kamera",
+    images: [{ url: "/opengraph-image", width: 1200, height: 630, alt: "Profesyonel Çekim & Prodüksiyon" }],
   },
+  alternates: { canonical: "https://izmitsosyalmedia.com/kamera" },
 };
 
 export default function CameraPage() {
