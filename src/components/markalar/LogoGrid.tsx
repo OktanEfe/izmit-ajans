@@ -10,10 +10,8 @@ const namedLogos = [
   { src: "/logos/izmitdilakademi.png", name: "İzmit Dil Akademi" },
   { src: "/logos/heef.png", name: "Heef" },
   { src: "/logos/cleopatra.jpeg", name: "Cleopatra INK" },
-  { src: "/logos/burgerschon.jpeg", name: "Burger Schön" },
   { src: "/logos/ehli.jpeg", name: "Ehl-i Kadayıf" },
   { src: "/logos/kebapcımehmet.jpeg", name: "Kebapçı Mehmet Usta" },
-  { src: "/logos/kebapcımustafa.jpeg", name: "Kebapçı Mustafa" },
 ];
 
 const numberedLogos = [
@@ -28,7 +26,6 @@ const numberedLogos = [
   "10_20260522_165226_0009",
   "11_20260522_165226_0010",
   "12_20260522_165226_0011",
-  "13_20260522_165226_0012",
   "14_20260522_165226_0013",
   "15_20260522_165226_0014",
   "16_20260522_165226_0015",
@@ -65,7 +62,7 @@ export default function LogoGrid() {
             transition={{ duration: 0.85, ease: [0.16, 1, 0.3, 1] }}
             className="text-center text-[10px] font-mono uppercase tracking-[0.4em] text-[#FF5A00]/70 mb-10"
           >
-            Güvenilir Markalar
+            Çalıştığımız Markalar
           </motion.p>
           <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-6 gap-3 md:gap-4">
             {allLogos.map((logo, i) => (
