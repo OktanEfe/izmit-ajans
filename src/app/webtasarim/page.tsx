@@ -20,9 +20,9 @@ export default function WebDesignPage() {
     <div className="relative z-10" ref={containerRef}>
       <Reveal><Hero /></Reveal>
       <MacAnimation smooth={smooth} />
-      <Reveal><ExperienceSection /></Reveal>
-      <Reveal><ProcessSection /></Reveal>
-      <Reveal><TechStack /></Reveal>
+      <ExperienceSection />
+      <ProcessSection />
+      <TechStack />
       <Reveal><CTA /></Reveal>
       <Reveal><Footer /></Reveal>
     </div>

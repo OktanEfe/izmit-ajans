@@ -33,10 +33,10 @@ export default function Story() {
             <span className="text-[#FF5A00] italic font-medium">Dönüşüm</span><br />
             Yolculuğu
           </h2>
-          <div className="space-y-5 text-white text-lg font-light leading-relaxed">
+          <div className="space-y-5 text-[#050505] text-lg font-light leading-relaxed">
             <p>2015&apos;ten bu yana bölgenin en köklü markalarının dijital dönüşüm süreçlerine liderlik ediyoruz. Sadece bir ajans değil, büyüme hikayesinin ortağıyız.</p>
             <p>Gastronomi&apos;den perakendeye, konaklama&apos;dan eğitim&apos;e kadar geniş bir yelpazede edindiğimiz deneyimle markanızın ihtiyaçlarına özel çözümler geliştiriyoruz.</p>
-            <p className="text-black font-medium">Başarılarımız güvenin ve tutkunun yansımasıdır.</p>
+            <p className="text-[#050505] font-medium">Başarılarımız güvenin ve tutkunun yansımasıdır.</p>
           </div>
           <Link href="/iletisim" className="group inline-flex items-center gap-3 bg-black text-white px-8 py-4 rounded-full font-semibold hover:bg-[#FF5A00] transition-all duration-500">
             Bizimle Çalışın <ArrowUpRight size={16} className="group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />

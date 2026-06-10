@@ -19,15 +19,17 @@ const webFeatures = [
   "Mobil Öncelikli Yapı",
 ];
 
+const VP = { once: true, amount: 0, margin: "0px 0px 200px 0px" } as const;
+
 export default function ProcessSection() {
   return (
     <section className="py-28 md:py-36 text-white px-6">
       <div className="max-w-7xl mx-auto">
         <motion.div
-          initial={{ opacity: 0, y: 40, filter: "blur(4px)" }}
+          initial={{ opacity: 0, y: 20, filter: "blur(4px)" }}
           whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
-          viewport={{ once: false, amount: 0.1 }}
-          transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
+          viewport={VP}
+          transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
           className="text-center mb-16"
         >
           <h2 className="text-4xl md:text-6xl font-medium tracking-[-0.04em] uppercase leading-[0.9] text-white">
@@ -43,10 +45,10 @@ export default function ProcessSection() {
           {process.map((p, i) => (
             <motion.div
               key={i}
-              initial={{ opacity: 0, y: 30, filter: "blur(4px)" }}
+              initial={{ opacity: 0, y: 15, filter: "blur(2px)" }}
               whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
-              viewport={{ once: false, amount: 0.05 }}
-              transition={{ delay: i * 0.07, duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+              viewport={VP}
+              transition={{ delay: i * 0.04, duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
               whileHover={{ y: -6, scale: 1.02 }}
               className={`relative p-8 bg-gradient-to-br ${p.color} rounded-3xl border border-white group overflow-hidden cursor-pointer transition-all duration-400`}
             >
@@ -73,10 +75,10 @@ export default function ProcessSection() {
         </div>
 
         <motion.div
-          initial={{ opacity: 0, y: 30, filter: "blur(4px)" }}
+          initial={{ opacity: 0, y: 15, filter: "blur(2px)" }}
           whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
-          viewport={{ once: false, amount: 0.05 }}
-          transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+          viewport={VP}
+          transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
           className="rounded-3xl border border-white bg-gradient-to-br from-white/[0.04] to-transparent p-10 md:p-14"
         >
           <h3 className="text-2xl md:text-4xl font-bold tracking-tighter uppercase mb-8 text-white">
