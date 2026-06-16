@@ -10,8 +10,8 @@ const namedLogos = [
   { src: "/logos/izmitdilakademi.png", name: "İzmit Dil Akademi" },
   { src: "/logos/heef.png", name: "Heef" },
   { src: "/logos/cleopatra.jpeg", name: "Cleopatra INK" },
-  { src: "/logos/ehli.jpeg", name: "Ehl-i Kadayıf" },
   { src: "/logos/kebapcımehmet.jpeg", name: "Kebapçı Mehmet Usta" },
+  { src: "/logos/ism_logo_20260612_171747_0000.webp", name: "İSM" },
 ];
 
 const numberedLogos = [
@@ -45,7 +45,16 @@ const numberedLogos = [
   "30_20260522_165226_0029",
 ].map((f) => ({ src: `/logos/${f}.jpg`, name: "" }));
 
-const allLogos = [...namedLogos, ...numberedLogos];
+const newLogos = [
+  "31_20260612_173011_0000",
+  "32_20260612_173011_0001",
+  "33_20260612_173011_0002",
+  "34_20260612_173011_0003",
+  "35_20260612_173011_0004",
+  "36_20260612_173011_0005",
+].map((f) => ({ src: `/logos/${f}.webp`, name: "" }));
+
+const allLogos = [...namedLogos, ...numberedLogos, ...newLogos];
 
 export default function LogoGrid() {
   return (

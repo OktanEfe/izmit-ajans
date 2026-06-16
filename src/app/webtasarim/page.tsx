@@ -7,6 +7,7 @@ import MacAnimation from "@/components/webtasarim/MacAnimation";
 import ExperienceSection from "@/components/webtasarim/ExperienceSection";
 import ProcessSection from "@/components/webtasarim/ProcessSection";
 import TechStack from "@/components/webtasarim/TechStack";
+import OrnekCalismalar from "@/components/webtasarim/OrnekCalismalar";
 import CTA from "@/components/webtasarim/CTA";
 import Footer from "@/components/layout/Footer";
 import Reveal from "@/components/motion/Reveal";
@@ -23,6 +24,7 @@ export default function WebDesignPage() {
       <ExperienceSection />
       <ProcessSection />
       <TechStack />
+      <Reveal><OrnekCalismalar /></Reveal>
       <Reveal><CTA /></Reveal>
       <Reveal><Footer /></Reveal>
     </div>

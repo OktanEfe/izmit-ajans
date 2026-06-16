@@ -3,6 +3,7 @@ import Hero from "@/components/sosyalmedya/Hero";
 import Göstergeler from "@/components/sosyalmedya/Metrics";
 import Platforms from "@/components/sosyalmedya/Platforms";
 import ServiceOfferings from "@/components/sosyalmedya/ServiceOfferings";
+import OrnekCalismalar from "@/components/sosyalmedya/OrnekCalismalar";
 import CTA from "@/components/sosyalmedya/CTA";
 import Footer from "@/components/layout/Footer";
 import Reveal from "@/components/motion/Reveal";
@@ -36,6 +37,7 @@ export default function SocialMediaPage() {
       <Reveal><Göstergeler /></Reveal>
       <Reveal><Platforms /></Reveal>
       <Reveal><ServiceOfferings /></Reveal>
+      <Reveal><OrnekCalismalar /></Reveal>
       <Reveal><CTA /></Reveal>
       <Reveal><Footer /></Reveal>
     </div>
