@@ -1,7 +1,7 @@
 "use client";
 
 import { motion, AnimatePresence } from "framer-motion";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 const TEXT = "İzmit Sosyal Medya.";
 
@@ -12,6 +12,22 @@ export default function IntroOverlay({ onDone }: { onDone: () => void }) {
   const [phase, setPhase]             = useState<Phase>("typing");
   const [cursorVisible, setCursor]    = useState(true);
   const [visible, setVisible]         = useState(true);
+
+  /* Guards against calling onDone() twice (normal exit + fail-safe) */
+  const doneRef = useRef(false);
+  const safeDone = () => {
+    if (doneRef.current) return;
+    doneRef.current = true;
+    onDone();
+  };
+
+  /* Fail-safe: if timers get throttled (tab backgrounded on mobile, low-power
+     mode, etc.) and the exit animation never completes, force the overlay
+     off after a generous margin so it can never permanently block scroll. */
+  useEffect(() => {
+    const failsafe = setTimeout(safeDone, 4000);
+    return () => clearTimeout(failsafe);
+  }, []);
 
   /* Typewriter */
   useEffect(() => {
@@ -46,7 +62,7 @@ export default function IntroOverlay({ onDone }: { onDone: () => void }) {
   }, [phase]);
 
   return (
-    <AnimatePresence onExitComplete={onDone}>
+    <AnimatePresence onExitComplete={safeDone}>
       {visible && (
         <motion.div
           key="intro"
