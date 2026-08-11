@@ -38,7 +38,7 @@ export default function Navbar() {
             pointer-events-auto transition-all duration-700 ease-[cubic-bezier(0.16,1,0.3,1)]
             flex items-center justify-between px-6 md:px-10 py-3 rounded-full border
             ${isScrolled || isOpen
-              ? "w-full max-w-[1000px] bg-black/70 backdrop-blur-md border-white/10 shadow-[0_8px_32px_rgba(0,0,0,0.4)]"
+              ? "w-full max-w-[1000px] bg-black/90 md:bg-black/70 md:backdrop-blur-md border-white/10 shadow-[0_8px_32px_rgba(0,0,0,0.4)]"
               : "w-full max-w-[1200px] bg-transparent border-transparent"}
           `}
         >

@@ -2,16 +2,18 @@
 
 import { motion } from "framer-motion";
 import type { MotionValue } from "framer-motion";
+import { useIsTouchDevice } from "@/lib/useIsTouchDevice";
 
 interface HeroProps {
   opacityHero: MotionValue<number>;
 }
 
 export default function Hero({ opacityHero }: HeroProps) {
+  const isTouch = useIsTouchDevice();
   return (
     <section className="h-screen flex flex-col items-center justify-center text-center px-6 pt-24 relative overflow-hidden">
       <div className="absolute inset-0 pointer-events-none z-0">
-        {[...Array(20)].map((_, i) => (
+        {!isTouch && [...Array(20)].map((_, i) => (
           <motion.div
             key={i}
             animate={{
@@ -33,13 +35,13 @@ export default function Hero({ opacityHero }: HeroProps) {
           />
         ))}
         <motion.div
-          animate={{ x: [0, 30, -15, 0], y: [0, -40, 20, 0], scale: [1, 1.12, 0.92, 1] }}
+          animate={isTouch ? undefined : { x: [0, 30, -15, 0], y: [0, -40, 20, 0], scale: [1, 1.12, 0.92, 1] }}
           transition={{ duration: 20, repeat: Infinity, ease: "easeInOut" }}
           className="absolute w-[600px] h-[500px] rounded-full"
           style={{ background: "radial-gradient(ellipse, rgba(255,90,0,1), transparent 70%)", top: "-5%", right: "5%", filter: "blur(120px)", opacity: 0.06 }}
         />
         <motion.div
-          animate={{ x: [0, -25, 15, 0], y: [0, 30, -20, 0], scale: [1, 0.95, 1.08, 1] }}
+          animate={isTouch ? undefined : { x: [0, -25, 15, 0], y: [0, 30, -20, 0], scale: [1, 0.95, 1.08, 1] }}
           transition={{ duration: 26, repeat: Infinity, ease: "easeInOut" }}
           className="absolute w-[500px] h-[500px] rounded-full"
           style={{ background: "radial-gradient(ellipse, rgba(139,92,246,1), transparent 70%)", bottom: "5%", left: "5%", filter: "blur(110px)", opacity: 0.07 }}

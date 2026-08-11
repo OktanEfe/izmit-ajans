@@ -3,25 +3,27 @@
 import { motion } from "framer-motion";
 import { ArrowUpRight } from "lucide-react";
 import Link from "next/link";
+import { useIsTouchDevice } from "@/lib/useIsTouchDevice";
 
 export default function Hero() {
+  const isTouch = useIsTouchDevice();
   return (
     <section className="h-screen flex flex-col items-center justify-center text-center px-6 pt-24 relative overflow-hidden">
       <div className="absolute inset-0 pointer-events-none z-0">
         <motion.div
-          animate={{ x: [0, -40, 20, 0], y: [0, 30, -40, 0], scale: [1, 1.1, 0.92, 1] }}
+          animate={isTouch ? undefined : { x: [0, -40, 20, 0], y: [0, 30, -40, 0], scale: [1, 1.1, 0.92, 1] }}
           transition={{ duration: 20, repeat: Infinity, ease: "easeInOut" }}
           className="absolute w-[600px] h-[600px] rounded-full"
           style={{ background: "radial-gradient(ellipse, rgba(77,141,255,1), transparent 70%)", top: "-15%", right: "-10%", filter: "blur(120px)", opacity: 0.09 }}
         />
         <motion.div
-          animate={{ x: [0, 35, -25, 0], y: [0, -40, 20, 0], scale: [1, 0.94, 1.1, 1] }}
+          animate={isTouch ? undefined : { x: [0, 35, -25, 0], y: [0, -40, 20, 0], scale: [1, 0.94, 1.1, 1] }}
           transition={{ duration: 24, repeat: Infinity, ease: "easeInOut" }}
           className="absolute w-[500px] h-[500px] rounded-full"
           style={{ background: "radial-gradient(ellipse, rgba(139,92,246,1), transparent 70%)", bottom: "10%", left: "-5%", filter: "blur(110px)", opacity: 0.07 }}
         />
         <motion.div
-          animate={{ x: [0, -20, 30, 0], y: [0, 35, -15, 0], scale: [1, 1.06, 0.96, 1] }}
+          animate={isTouch ? undefined : { x: [0, -20, 30, 0], y: [0, 35, -15, 0], scale: [1, 1.06, 0.96, 1] }}
           transition={{ duration: 18, repeat: Infinity, ease: "easeInOut" }}
           className="absolute w-[400px] h-[300px] rounded-full"
           style={{ background: "radial-gradient(ellipse, rgba(255,90,0,1), transparent 70%)", top: "30%", left: "30%", filter: "blur(100px)", opacity: 0.05 }}

@@ -2,6 +2,7 @@
 
 import { motion, useScroll, useTransform } from "framer-motion";
 import { useRef } from "react";
+import { useIsTouchDevice } from "@/lib/useIsTouchDevice";
 
 export default function ScrollAtmosphere() {
   const ref = useRef<HTMLDivElement>(null);
@@ -12,6 +13,12 @@ export default function ScrollAtmosphere() {
   const orb1Y = useTransform(scrollYProgress, [0, 1], ["0%", "30%"]);
   const orb2Y = useTransform(scrollYProgress, [0, 1], ["0%", "-20%"]);
   const orb3Opacity = useTransform(scrollYProgress, [0, 0.5, 1], [0.03, 0.08, 0.04]);
+
+  // Three permanently-mounted 500-700px filter:blur() layers, re-composited on
+  // every scroll frame site-wide, are pure decoration — not worth the mobile
+  // GPU/raster budget. Desktop keeps the full parallax glow.
+  const isTouch = useIsTouchDevice();
+  if (isTouch) return null;
 
   return (
     <div ref={ref} className="fixed inset-0 pointer-events-none z-0 overflow-hidden" aria-hidden>

@@ -49,12 +49,16 @@ h1, h2, h3, h4, h5, h6 {
   75%       { border-radius: 36px 28px 38px 26px; }
 }
 
-/* Gentle brightness glow — no hue-rotate, keeps orange/blue/purple */
+/* Gentle brightness glow — no hue-rotate, keeps orange/blue/purple.
+   brightness() alone is a cheap color-matrix op; deliberately no blur()
+   here — an animated blur() on a full-viewport layer forces continuous
+   GPU raster work every frame (measured ~700ms of RasterTask per 3s idle
+   on mobile-class hardware), which is a major jank source. */
 @keyframes borderGlow {
   0%, 100% { filter: brightness(1.1); }
-  25%       { filter: brightness(1.6) blur(0.4px); }
+  25%       { filter: brightness(1.6); }
   50%       { filter: brightness(0.9); }
-  75%       { filter: brightness(1.5) blur(0.3px); }
+  75%       { filter: brightness(1.5); }
 }
 
 .hero-animated-border {
@@ -78,18 +82,19 @@ h1, h2, h3, h4, h5, h6 {
   mask-composite: exclude;
 }
 
-/* ─── Equalizer wave — multiple layers at different phases ─── */
+/* ─── Equalizer wave — multiple layers at different phases ───
+   brightness()-only, same reasoning as borderGlow above. */
 @keyframes eqWaveA {
-  0%, 100% { filter: brightness(1.0) blur(0px); }
-  22%      { filter: brightness(1.75) blur(0.8px); }
+  0%, 100% { filter: brightness(1.0); }
+  22%      { filter: brightness(1.75); }
   50%      { filter: brightness(0.85); }
-  74%      { filter: brightness(1.55) blur(0.5px); }
+  74%      { filter: brightness(1.55); }
 }
 @keyframes eqWaveB {
   0%, 100% { filter: brightness(0.9); }
-  18%      { filter: brightness(1.6) blur(0.6px); }
+  18%      { filter: brightness(1.6); }
   42%      { filter: brightness(1.0); }
-  70%      { filter: brightness(1.45) blur(0.4px); }
+  70%      { filter: brightness(1.45); }
   88%      { filter: brightness(0.85); }
 }
 @keyframes eqWaveC {
@@ -144,6 +149,24 @@ h1, h2, h3, h4, h5, h6 {
   50%       { opacity: 0.06; }
 }
 .hero-grid { animation: gridPulse 6s ease-in-out infinite; }
+
+/* Mobile/touch: the Hero's stack of always-on full-viewport animations
+   (conic-gradient rotation, border-radius morphing, blur/brightness pulse,
+   orb scale+opacity) measured ~700ms-3.5s of GPU raster work per 3s of
+   idle time on mobile-class hardware — a primary jank source. Fall back to
+   a static (still visually present, just non-animating) version. */
+@media (max-width: 767px), (pointer: coarse) {
+  .hero-eq-layer1,
+  .hero-eq-layer2,
+  .hero-eq-layer3,
+  .hero-animated-border,
+  .hero-orb-1,
+  .hero-orb-2,
+  .hero-orb-3,
+  .hero-grid {
+    animation: none;
+  }
+}
 
 @keyframes ringRotate    { to { transform: rotate(360deg);  } }
 @keyframes ringRotateRev { to { transform: rotate(-360deg); } }

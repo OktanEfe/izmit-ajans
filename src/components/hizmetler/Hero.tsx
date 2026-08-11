@@ -4,30 +4,32 @@ import { motion, useScroll, useTransform } from "framer-motion";
 import { useRef } from "react";
 import { ArrowUpRight } from "lucide-react";
 import Link from "next/link";
+import { useIsTouchDevice } from "@/lib/useIsTouchDevice";
 
 export default function Hero() {
   const heroRef = useRef<HTMLElement>(null);
   const { scrollYProgress } = useScroll({ target: heroRef, offset: ["start start", "end start"] });
   const heroOpacity = useTransform(scrollYProgress, [0, 0.5], [1, 0]);
   const heroY = useTransform(scrollYProgress, [0, 1], [0, 80]);
+  const isTouch = useIsTouchDevice();
 
   return (
     <section ref={heroRef} className="relative min-h-screen flex flex-col justify-center items-center text-center px-6 pt-24 overflow-hidden">
       <div className="absolute inset-0 pointer-events-none z-0">
         <motion.div
-          animate={{ x: [0, 40, -20, 0], y: [0, -50, 25, 0], scale: [1, 1.1, 0.92, 1] }}
+          animate={isTouch ? undefined : { x: [0, 40, -20, 0], y: [0, -50, 25, 0], scale: [1, 1.1, 0.92, 1] }}
           transition={{ duration: 20, repeat: Infinity, ease: "easeInOut" }}
           className="absolute w-[600px] h-[500px] rounded-full"
           style={{ background: "radial-gradient(ellipse, rgba(255,90,0,1), transparent 70%)", top: "-5%", left: "0%", filter: "blur(110px)", opacity: 0.08 }}
         />
         <motion.div
-          animate={{ x: [0, -35, 20, 0], y: [0, 30, -40, 0], scale: [1, 0.95, 1.12, 1] }}
+          animate={isTouch ? undefined : { x: [0, -35, 20, 0], y: [0, 30, -40, 0], scale: [1, 0.95, 1.12, 1] }}
           transition={{ duration: 24, repeat: Infinity, ease: "easeInOut" }}
           className="absolute w-[500px] h-[600px] rounded-full"
           style={{ background: "radial-gradient(ellipse, rgba(139,92,246,1), transparent 70%)", top: "10%", right: "-5%", filter: "blur(120px)", opacity: 0.07 }}
         />
         <motion.div
-          animate={{ x: [0, 25, -30, 0], y: [0, 40, -20, 0], scale: [1, 1.08, 0.96, 1] }}
+          animate={isTouch ? undefined : { x: [0, 25, -30, 0], y: [0, 40, -20, 0], scale: [1, 1.08, 0.96, 1] }}
           transition={{ duration: 18, repeat: Infinity, ease: "easeInOut" }}
           className="absolute w-[400px] h-[400px] rounded-full"
           style={{ background: "radial-gradient(ellipse, rgba(77,141,255,1), transparent 70%)", bottom: "10%", left: "25%", filter: "blur(100px)", opacity: 0.06 }}

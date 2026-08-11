@@ -4,12 +4,14 @@ import { motion, useScroll, useTransform } from "framer-motion";
 import { useRef } from "react";
 import { ArrowUpRight } from "lucide-react";
 import Link from "next/link";
+import { useIsTouchDevice } from "@/lib/useIsTouchDevice";
 
 export default function Hero() {
   const heroRef = useRef<HTMLElement>(null);
   const { scrollYProgress } = useScroll({ target: heroRef, offset: ["start start", "end start"] });
   const heroOpacity = useTransform(scrollYProgress, [0, 0.6], [1, 0]);
   const heroY = useTransform(scrollYProgress, [0, 1], [0, 100]);
+  const isTouch = useIsTouchDevice();
 
   return (
     <section ref={heroRef} className="relative min-h-screen flex flex-col justify-center items-center text-center px-6 pt-24 overflow-hidden">
@@ -22,13 +24,13 @@ export default function Hero() {
           }}
         />
         <motion.div
-          animate={{ x: [0, -30, 15, 0], y: [0, 25, -35, 0], scale: [1, 1.1, 0.93, 1] }}
+          animate={isTouch ? undefined : { x: [0, -30, 15, 0], y: [0, 25, -35, 0], scale: [1, 1.1, 0.93, 1] }}
           transition={{ duration: 22, repeat: Infinity, ease: "easeInOut" }}
           className="absolute w-[700px] h-[500px] rounded-full"
           style={{ background: "radial-gradient(ellipse, rgba(255,90,0,1), transparent 70%)", top: "-10%", right: "-5%", filter: "blur(130px)", opacity: 0.09 }}
         />
         <motion.div
-          animate={{ x: [0, 40, -20, 0], y: [0, -30, 20, 0], scale: [1, 0.94, 1.08, 1] }}
+          animate={isTouch ? undefined : { x: [0, 40, -20, 0], y: [0, -30, 20, 0], scale: [1, 0.94, 1.08, 1] }}
           transition={{ duration: 18, repeat: Infinity, ease: "easeInOut" }}
           className="absolute w-[500px] h-[600px] rounded-full"
           style={{ background: "radial-gradient(ellipse, rgba(236,72,153,1), transparent 70%)", bottom: "0%", left: "-5%", filter: "blur(120px)", opacity: 0.07 }}
