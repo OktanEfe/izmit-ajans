@@ -63,11 +63,10 @@ export default function VisionImpact() {
   }, []);
 
   const textVariants: Variants = {
-    hidden: { opacity: 0, y: 60, filter: "blur(12px)" },
+    hidden: { opacity: 0, y: 60 },
     visible: {
       opacity: 1,
       y: 0,
-      filter: "blur(0px)",
       transition: { duration: 1.6, ease: [0.16, 1, 0.3, 1] },
     },
   };
@@ -80,11 +79,10 @@ export default function VisionImpact() {
   };
 
   const cardVariants: Variants = {
-    hidden: { opacity: 0, y: 50, filter: "blur(10px)" },
+    hidden: { opacity: 0, y: 50 },
     visible: {
       opacity: 1,
       y: 0,
-      filter: "blur(0px)",
       transition: { duration: 1.5, ease: [0.16, 1, 0.3, 1] },
     },
   };
@@ -108,7 +106,7 @@ export default function VisionImpact() {
             <motion.span
               initial={{ opacity: 0, letterSpacing: "0.2em" }}
               whileInView={{ opacity: 0.3, letterSpacing: "0.5em" }}
-              viewport={{ once: false, amount: 0.15 }}
+              viewport={{ once: true, amount: 0.15, margin: "0px 0px 15% 0px" }}
               transition={{ duration: 1.2 }}
               className="text-[10px] font-bold text-white uppercase block mb-6 font-mono"
             >
@@ -118,7 +116,7 @@ export default function VisionImpact() {
             <motion.h2
               initial="hidden"
               whileInView="visible"
-              viewport={{ once: false, amount: 0.15 }}
+              viewport={{ once: true, amount: 0.15, margin: "0px 0px 15% 0px" }}
               variants={textVariants}
               className="text-5xl md:text-[76px] font-medium tracking-[-0.04em] uppercase leading-[0.9] mb-8"
             >
@@ -131,7 +129,7 @@ export default function VisionImpact() {
             <motion.p
               initial="hidden"
               whileInView="visible"
-              viewport={{ once: false, amount: 0.15 }}
+              viewport={{ once: true, amount: 0.15, margin: "0px 0px 15% 0px" }}
               variants={textVariants}
               className="text-white text-lg md:text-xl font-light leading-relaxed max-w-sm text-balance"
             >
@@ -143,7 +141,7 @@ export default function VisionImpact() {
             style={{ y: yRight }}
             initial="hidden"
             whileInView="visible"
-            viewport={{ once: false, amount: 0.15 }}
+            viewport={{ once: true, amount: 0.15, margin: "0px 0px 15% 0px" }}
             variants={gridVariants}
             className="lg:col-span-7 flex flex-col gap-8 md:gap-10"
           >

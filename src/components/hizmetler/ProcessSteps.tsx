@@ -14,7 +14,7 @@ export default function ProcessSteps() {
   return (
     <section className="py-32 md:py-48 px-6 bg-white text-black">
       <div className="max-w-7xl mx-auto">
-        <motion.div variants={reveal} initial="hidden" whileInView="visible" viewport={{ once: false, amount: 0.15 }} className="mb-20 text-center">
+        <motion.div variants={reveal} initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.15, margin: "0px 0px 15% 0px" }} className="mb-20 text-center">
           <span className="text-[10px] uppercase tracking-[0.4em] font-mono text-[#FF5A00] block mb-4">Nasıl Çalışıyoruz</span>
           <h2 className="text-4xl md:text-6xl font-medium tracking-[-0.04em] uppercase leading-[0.9]">
             4 Adımda<br />
@@ -28,7 +28,7 @@ export default function ProcessSteps() {
               variants={reveal}
               initial="hidden"
               whileInView="visible"
-              viewport={{ once: false, amount: 0.15 }}
+              viewport={{ once: true, amount: 0.15, margin: "0px 0px 15% 0px" }}
               transition={{ delay: i * 0.1 }}
               className="bg-neutral-50 rounded-[2rem] p-8 border border-neutral-100 relative overflow-hidden group hover:shadow-xl transition-shadow duration-500"
             >

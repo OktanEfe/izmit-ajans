@@ -26,8 +26,8 @@ export default function ProcessSection() {
     <section className="py-28 md:py-36 text-white px-6">
       <div className="max-w-7xl mx-auto">
         <motion.div
-          initial={{ opacity: 0, y: 20, filter: "blur(4px)" }}
-          whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
           viewport={VP}
           transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
           className="text-center mb-16"
@@ -45,8 +45,8 @@ export default function ProcessSection() {
           {process.map((p, i) => (
             <motion.div
               key={i}
-              initial={{ opacity: 0, y: 15, filter: "blur(2px)" }}
-              whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+              initial={{ opacity: 0, y: 15 }}
+              whileInView={{ opacity: 1, y: 0 }}
               viewport={VP}
               transition={{ delay: i * 0.04, duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
               whileHover={{ y: -6, scale: 1.02 }}
@@ -75,8 +75,8 @@ export default function ProcessSection() {
         </div>
 
         <motion.div
-          initial={{ opacity: 0, y: 15, filter: "blur(2px)" }}
-          whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+          initial={{ opacity: 0, y: 15 }}
+          whileInView={{ opacity: 1, y: 0 }}
           viewport={VP}
           transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
           className="rounded-3xl border border-white bg-gradient-to-br from-white/[0.04] to-transparent p-10 md:p-14"

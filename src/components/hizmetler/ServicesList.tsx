@@ -63,7 +63,7 @@ export default function ServicesList() {
           variants={reveal}
           initial="hidden"
           whileInView="visible"
-          viewport={{ once: false, amount: 0.15 }}
+          viewport={{ once: true, amount: 0.15, margin: "0px 0px 15% 0px" }}
           className="mb-24 pb-12 border-b border-white/[0.06] flex flex-col md:flex-row md:items-end justify-between gap-8"
         >
           <h2 className="text-4xl md:text-6xl font-medium tracking-[-0.04em] text-white uppercase leading-[0.9]">
@@ -86,7 +86,7 @@ export default function ServicesList() {
                 variants={reveal}
                 initial="hidden"
                 whileInView="visible"
-                viewport={{ once: false, amount: 0.15 }}
+                viewport={{ once: true, amount: 0.15, margin: "0px 0px 15% 0px" }}
                 transition={{ delay: i * 0.08 }}
               >
                 <Link href={svc.href} className="group py-12 md:py-16 flex flex-col md:flex-row justify-between items-start md:items-center gap-8 cursor-pointer">

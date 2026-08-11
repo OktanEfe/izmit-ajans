@@ -27,7 +27,7 @@ export default function Features() {
         <motion.div
           initial={{ opacity: 0, y: 40 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: false, amount: 0.15 }}
+          viewport={{ once: true, amount: 0.15, margin: "0px 0px 15% 0px" }}
           transition={{ duration: 0.85, ease: [0.16, 1, 0.3, 1] }}
           className="mb-20 flex flex-col md:flex-row md:items-end justify-between gap-8 pb-12 border-b border-white/[0.06]"
         >
@@ -48,7 +48,7 @@ export default function Features() {
                 key={i}
                 initial={{ opacity: 0, x: -20 }}
                 whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: false, amount: 0.1 }}
+                viewport={{ once: true, amount: 0.1, margin: "0px 0px 15% 0px" }}
                 transition={{ delay: i * 0.07, duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
                 className="group py-8 md:py-10 flex items-center gap-6 md:gap-12"
               >

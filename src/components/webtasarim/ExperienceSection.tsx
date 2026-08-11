@@ -16,8 +16,8 @@ export default function ExperienceSection() {
     <section className="py-32 px-6">
       <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 items-center mb-24">
         <motion.div
-          initial={{ opacity: 0, y: 20, filter: "blur(4px)" }}
-          whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
           viewport={VP}
           transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
           className="relative h-[460px] rounded-[3rem] overflow-hidden border border-white/10 shadow-2xl"
@@ -36,8 +36,8 @@ export default function ExperienceSection() {
         </motion.div>
 
         <motion.div
-          initial={{ opacity: 0, y: 20, filter: "blur(4px)" }}
-          whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
           viewport={VP}
           transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
           className="space-y-8"

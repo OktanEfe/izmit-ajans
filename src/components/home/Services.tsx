@@ -46,11 +46,10 @@ const services: ServiceItem[] = [
 
 export default function Services() {
   const headerVariants: Variants = {
-    hidden: { opacity: 0, y: 30, filter: "blur(8px)" },
+    hidden: { opacity: 0, y: 30 },
     visible: {
       opacity: 1,
       y: 0,
-      filter: "blur(0px)",
       transition: { duration: 1.4, ease: [0.16, 1, 0.3, 1] }
     }
   };
@@ -61,11 +60,10 @@ export default function Services() {
   };
 
   const cardVariants: Variants = {
-    hidden: { opacity: 0, y: 50, filter: "blur(10px)" },
+    hidden: { opacity: 0, y: 50 },
     visible: {
       opacity: 1,
       y: 0,
-      filter: "blur(0px)",
       transition: { duration: 1.4, ease: [0.16, 1, 0.3, 1] }
     }
   };
@@ -81,7 +79,7 @@ export default function Services() {
         <motion.div
           initial="hidden"
           whileInView="visible"
-          viewport={{ once: false, amount: 0.15 }}
+          viewport={{ once: true, amount: 0.15, margin: "0px 0px 15% 0px" }}
           variants={headerVariants}
           className="mb-24 md:mb-36 flex flex-col lg:flex-row lg:items-end justify-between gap-8 border-b border-white/[0.06] pb-16"
         >
@@ -99,7 +97,7 @@ export default function Services() {
         <motion.div
           initial="hidden"
           whileInView="visible"
-          viewport={{ once: false, amount: 0.05 }}
+          viewport={{ once: true, amount: 0.05, margin: "0px 0px 15% 0px" }}
           variants={gridVariants}
           className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8"
         >

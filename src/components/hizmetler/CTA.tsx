@@ -8,7 +8,7 @@ import { reveal } from "@/lib/animations";
 export default function CTA() {
   return (
     <section className="py-32 px-6 border-t border-white/[0.04]">
-      <motion.div variants={reveal} initial="hidden" whileInView="visible" viewport={{ once: false, amount: 0.15 }} className="max-w-4xl mx-auto text-center">
+      <motion.div variants={reveal} initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.15, margin: "0px 0px 15% 0px" }} className="max-w-4xl mx-auto text-center">
         <span className="text-[10px] uppercase tracking-[0.5em] font-mono text-neutral-500 block mb-8">Sonraki Adım</span>
         <h2 className="text-4xl md:text-6xl font-medium tracking-[-0.05em] leading-[0.85] uppercase text-white mb-12">
           Birlikte<br />

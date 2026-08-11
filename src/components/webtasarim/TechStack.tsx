@@ -60,8 +60,8 @@ export default function TechStack() {
     <section className="py-32 px-6 bg-transparent">
       <div className="max-w-7xl mx-auto">
         <motion.div
-          initial={{ opacity: 0, y: 20, filter: "blur(4px)" }}
-          whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
           viewport={VP}
           transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
           className="mb-20 flex flex-col md:flex-row md:items-end justify-between gap-6 pb-10 border-b border-white/[0.06]"

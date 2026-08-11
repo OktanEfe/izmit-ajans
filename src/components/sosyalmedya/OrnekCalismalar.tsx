@@ -33,7 +33,7 @@ export default function OrnekCalismalar() {
           variants={reveal}
           initial="hidden"
           whileInView="visible"
-          viewport={{ once: false, amount: 0.15 }}
+          viewport={{ once: true, amount: 0.15, margin: "0px 0px 15% 0px" }}
           className="mb-20 border-b border-white/[0.06] pb-12"
         >
           <p className="text-[10px] font-mono uppercase tracking-[0.4em] text-[#FF5A00]/70 mb-4">
@@ -55,7 +55,7 @@ export default function OrnekCalismalar() {
               variants={reveal}
               initial="hidden"
               whileInView="visible"
-              viewport={{ once: false, amount: 0.15 }}
+              viewport={{ once: true, amount: 0.15, margin: "0px 0px 15% 0px" }}
               transition={{ delay: i * 0.1 }}
               whileHover={{ y: -6 }}
               className="group flex flex-col bg-[#0A0A0A] border border-white/[0.06] rounded-[2rem] overflow-hidden hover:border-[#FF5A00]/30 transition-all duration-700"

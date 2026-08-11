@@ -88,7 +88,7 @@ function VideoCard({
     <motion.div
       initial={{ opacity: 0, y: 30 }}
       whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: false, amount: 0.15 }}
+      viewport={{ once: true, amount: 0.15, margin: "0px 0px 15% 0px" }}
       transition={{ delay: index * 0.1, duration: 0.75, ease: [0.16, 1, 0.3, 1] }}
       className="group relative cursor-pointer rounded-xl overflow-hidden border border-white/[0.07] hover:border-[#FF5A00]/40 transition-colors duration-500"
       style={{ aspectRatio: "9/16" }}
@@ -137,7 +137,7 @@ export default function VideoGallery() {
         <motion.div
           initial={{ opacity: 0, y: 40 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: false, amount: 0.15 }}
+          viewport={{ once: true, amount: 0.15, margin: "0px 0px 15% 0px" }}
           transition={{ duration: 0.85, ease: [0.16, 1, 0.3, 1] }}
           className="mb-14 flex flex-col md:flex-row md:items-end justify-between gap-6 pb-10 border-b border-white/[0.06]"
         >

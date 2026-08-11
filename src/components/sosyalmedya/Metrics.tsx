@@ -22,7 +22,7 @@ export default function Göstergeler() {
   return (
     <section className="py-32 md:py-48 px-6 border-t border-white/[0.04]">
       <div className="max-w-7xl mx-auto">
-        <motion.div variants={reveal} initial="hidden" whileInView="visible" viewport={{ once: false, amount: 0.15 }} className="text-center mb-20">
+        <motion.div variants={reveal} initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.15, margin: "0px 0px 15% 0px" }} className="text-center mb-20">
           <span className="text-[10px] font-mono uppercase tracking-[0.4em] text-neutral-500 block mb-4">Rakamlarla Biz</span>
           <h2 className="text-4xl md:text-6xl font-medium tracking-[-0.04em] uppercase text-white leading-[0.9]">
             Sonuç<br />
@@ -38,7 +38,7 @@ export default function Göstergeler() {
                 variants={reveal}
                 initial="hidden"
                 whileInView="visible"
-                viewport={{ once: false, amount: 0.15 }}
+                viewport={{ once: true, amount: 0.15, margin: "0px 0px 15% 0px" }}
                 transition={{ delay: i * 0.1 }}
                 className="bg-[#0A0A0A] border border-white/[0.06] rounded-[2rem] p-10 group hover:border-[#FF5A00]/30 transition-all duration-700"
               >

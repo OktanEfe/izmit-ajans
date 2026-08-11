@@ -17,9 +17,9 @@ export default function Footer() {
 
         <div className="mb-24 md:mb-40">
           <motion.div
-            initial={{ opacity: 0, y: 60, filter: "blur(10px)" }}
-            whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
-            viewport={{ once: false, amount: 0.15 }}
+            initial={{ opacity: 0, y: 60 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.15, margin: "0px 0px 15% 0px" }}
             transition={{ duration: 1.5, ease: [0.16, 1, 0.3, 1] }}
           >
             <span className="text-[10px] font-mono tracking-[0.4em] text-neutral-500 uppercase block mb-6">
@@ -36,7 +36,7 @@ export default function Footer() {
           <motion.div
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
-            viewport={{ once: false, amount: 0.15 }}
+            viewport={{ once: true, amount: 0.15, margin: "0px 0px 15% 0px" }}
             transition={{ delay: 0.3, duration: 1 }}
             className="inline-block"
           >

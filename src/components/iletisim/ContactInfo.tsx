@@ -18,7 +18,7 @@ const socialLinks = [
 export default function ContactInfo() {
   return (
     <div className="lg:col-span-5 space-y-12">
-      <motion.div variants={reveal} initial="hidden" whileInView="visible" viewport={{ once: false, amount: 0.15 }}>
+      <motion.div variants={reveal} initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.15, margin: "0px 0px 15% 0px" }}>
         <h2 className="text-3xl md:text-5xl font-medium tracking-[-0.04em] uppercase leading-[0.9] mb-6">
           İletişim<br />
           <span className="text-[#FF5A00] italic">Kanalları.</span>
@@ -28,7 +28,7 @@ export default function ContactInfo() {
         </p>
       </motion.div>
 
-      <motion.div variants={reveal} initial="hidden" whileInView="visible" viewport={{ once: false, amount: 0.15 }} className="space-y-6">
+      <motion.div variants={reveal} initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.15, margin: "0px 0px 15% 0px" }} className="space-y-6">
         {contactItems.map((item, i) => {
           const Icon = item.icon;
           return (
@@ -50,7 +50,7 @@ export default function ContactInfo() {
         })}
       </motion.div>
 
-      <motion.div variants={reveal} initial="hidden" whileInView="visible" viewport={{ once: false, amount: 0.15 }} className="flex gap-3 pt-8 border-t border-neutral-100">
+      <motion.div variants={reveal} initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.15, margin: "0px 0px 15% 0px" }} className="flex gap-3 pt-8 border-t border-neutral-100">
         {socialLinks.map((s, i) => {
           const Icon = s.icon;
           return (

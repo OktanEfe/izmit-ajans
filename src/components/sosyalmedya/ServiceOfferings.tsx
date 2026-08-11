@@ -22,7 +22,7 @@ export default function ServiceOfferings() {
   return (
     <section className="py-32 md:py-48 px-6">
       <div className="max-w-7xl mx-auto">
-        <motion.div variants={reveal} initial="hidden" whileInView="visible" viewport={{ once: false, amount: 0.15 }} className="mb-20 border-b border-white/[0.06] pb-12">
+        <motion.div variants={reveal} initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.15, margin: "0px 0px 15% 0px" }} className="mb-20 border-b border-white/[0.06] pb-12">
           <h2 className="text-4xl md:text-6xl font-medium tracking-[-0.04em] uppercase text-white leading-[0.9]">
             Ne<br />
             <span className="text-[#FF5A00] italic">Sunuyoruz?</span>
@@ -37,7 +37,7 @@ export default function ServiceOfferings() {
                 variants={reveal}
                 initial="hidden"
                 whileInView="visible"
-                viewport={{ once: false, amount: 0.15 }}
+                viewport={{ once: true, amount: 0.15, margin: "0px 0px 15% 0px" }}
                 transition={{ delay: i * 0.08 }}
                 className="group flex gap-6 p-8 bg-[#0A0A0A] rounded-[2rem] border border-white/[0.06] hover:border-[#FF5A00]/30 transition-all duration-700"
               >

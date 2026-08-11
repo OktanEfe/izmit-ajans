@@ -10,7 +10,7 @@ export default function Story() {
   return (
     <section className="py-32 md:py-48 px-6 bg-white text-black relative z-20">
       <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-        <motion.div variants={reveal} initial="hidden" whileInView="visible" viewport={{ once: false, amount: 0.15 }} className="relative h-[500px] rounded-[3rem] overflow-hidden border border-neutral-200 shadow-2xl group">
+        <motion.div variants={reveal} initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.15, margin: "0px 0px 15% 0px" }} className="relative h-[500px] rounded-[3rem] overflow-hidden border border-neutral-200 shadow-2xl group">
           <Image
             src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?q=80&w=2070"
             alt="Ekip"
@@ -26,7 +26,7 @@ export default function Story() {
           </div>
         </motion.div>
 
-        <motion.div variants={reveal} initial="hidden" whileInView="visible" viewport={{ once: false, amount: 0.15 }} className="space-y-8">
+        <motion.div variants={reveal} initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.15, margin: "0px 0px 15% 0px" }} className="space-y-8">
           <span className="text-[10px] font-mono uppercase tracking-[0.4em] text-[#FF5A00] block">Hikayemiz</span>
           <h2 className="text-4xl md:text-6xl font-medium tracking-[-0.04em] uppercase leading-[0.9]">
             Dijital<br />

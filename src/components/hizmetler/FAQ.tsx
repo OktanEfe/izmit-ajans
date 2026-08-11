@@ -17,7 +17,7 @@ export default function FAQ() {
   return (
     <section className="py-32 md:py-48 px-6">
       <div className="max-w-4xl mx-auto">
-        <motion.div variants={reveal} initial="hidden" whileInView="visible" viewport={{ once: false, amount: 0.15 }} className="text-center mb-20">
+        <motion.div variants={reveal} initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.15, margin: "0px 0px 15% 0px" }} className="text-center mb-20">
           <span className="text-[10px] uppercase tracking-[0.4em] font-mono text-neutral-500 block mb-4">Şeffaflık</span>
           <h2 className="text-4xl md:text-6xl font-medium tracking-[-0.04em] uppercase text-white leading-[0.9]">
             Sıkça<br />
@@ -26,7 +26,7 @@ export default function FAQ() {
         </motion.div>
         <div className="divide-y divide-white/[0.06]">
           {faq.map((item, i) => (
-            <motion.div key={i} variants={reveal} initial="hidden" whileInView="visible" viewport={{ once: false, amount: 0.15 }} transition={{ delay: i * 0.08 }}>
+            <motion.div key={i} variants={reveal} initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.15, margin: "0px 0px 15% 0px" }} transition={{ delay: i * 0.08 }}>
               <button
                 onClick={() => setOpenFaq(openFaq === i ? null : i)}
                 className="w-full py-8 flex justify-between items-center text-left gap-4 group"

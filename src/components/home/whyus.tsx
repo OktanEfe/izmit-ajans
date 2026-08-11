@@ -39,11 +39,10 @@ export default function WhyUs() {
   const xTranslate = useTransform(scrollYProgress, [0, 1], ["0%", "-20%"]);
 
   const textVariants: Variants = {
-    hidden: { opacity: 0, y: 60, filter: "blur(12px)" },
+    hidden: { opacity: 0, y: 60 },
     visible: {
       opacity: 1,
       y: 0,
-      filter: "blur(0px)",
       transition: { duration: 1.6, ease: [0.16, 1, 0.3, 1] },
     },
   };
@@ -67,7 +66,7 @@ export default function WhyUs() {
         <motion.div
           initial="hidden"
           whileInView="visible"
-          viewport={{ once: false, amount: 0.15 }}
+          viewport={{ once: true, amount: 0.15, margin: "0px 0px 15% 0px" }}
           variants={textVariants}
           className="mb-32 flex flex-col md:flex-row md:items-end justify-between gap-12 border-b border-white/[0.05] pb-16"
         >
@@ -86,9 +85,9 @@ export default function WhyUs() {
           {features.map((f, i) => (
             <motion.div
               key={i}
-              initial={{ opacity: 0, y: 30, filter: "blur(4px)" }}
-              whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
-              viewport={{ once: false, amount: 0.15 }}
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.15, margin: "0px 0px 15% 0px" }}
               transition={{ duration: 0.85, ease: [0.16, 1, 0.3, 1], delay: i * 0.1 }}
               className="group relative border-t border-white/[0.05] py-10 md:py-16 flex flex-col md:flex-row justify-between items-start md:items-center cursor-pointer transition-all duration-500"
             >
@@ -117,7 +116,7 @@ export default function WhyUs() {
           <motion.h3
             initial="hidden"
             whileInView="visible"
-            viewport={{ once: false, amount: 0.15 }}
+            viewport={{ once: true, amount: 0.15, margin: "0px 0px 15% 0px" }}
             variants={textVariants}
             className="text-4xl md:text-[64px] font-medium tracking-[-0.04em] leading-[1] max-w-4xl mx-auto text-neutral-300"
           >
@@ -132,7 +131,7 @@ export default function WhyUs() {
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.3, duration: 1 }}
-            viewport={{ once: false, amount: 0.15 }}
+            viewport={{ once: true, amount: 0.15, margin: "0px 0px 15% 0px" }}
             className="mt-16 flex flex-col items-center"
           >
             <button className="group relative flex items-center gap-3 border border-white/10 bg-transparent text-white px-10 py-5 rounded-full text-xs font-mono tracking-[0.2em] uppercase overflow-hidden transition-all duration-500 hover:border-white hover:shadow-[0_0_50px_rgba(255,255,255,0.05)] active:scale-[0.98]">

@@ -28,7 +28,7 @@ export default function WhatsAppCTA() {
         variants={reveal}
         initial="hidden"
         whileInView="visible"
-        viewport={{ once: false, amount: 0.15 }}
+        viewport={{ once: true, amount: 0.15, margin: "0px 0px 15% 0px" }}
         className="max-w-3xl mx-auto relative"
       >
         <div className="rounded-[3rem] border border-white/[0.07] bg-gradient-to-br from-white/[0.04] to-white/[0.01] backdrop-blur-sm p-14 md:p-20 text-center">

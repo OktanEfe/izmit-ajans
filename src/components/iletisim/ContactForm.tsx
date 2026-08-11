@@ -58,7 +58,7 @@ export default function ContactForm() {
 
   return (
     <div className="lg:col-span-7">
-      <motion.div variants={reveal} initial="hidden" whileInView="visible" viewport={{ once: false, amount: 0.15 }}
+      <motion.div variants={reveal} initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.15, margin: "0px 0px 15% 0px" }}
         className="bg-neutral-50 rounded-[3rem] p-8 md:p-12 border border-neutral-100"
       >
         {submitted ? (
